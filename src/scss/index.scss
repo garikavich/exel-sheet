@@ -1,0 +1,9 @@
+$dark: #fff;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: $dark;
+  border: 4px solid blue;
+}
