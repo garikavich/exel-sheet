@@ -1,14 +1,11 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path')
-
 module.exports = (env, argv) => {
-
     const isProduction = argv.mode === 'production';
     const isDevelopment = argv.mode === 'development';
     const fileName = ext => isProduction ? `[name].[contenthash].bundle.${ext}` : `[name].bundle.${ext}`;
-
     return {
         target: 'web',
         context: path.resolve(__dirname, 'src'),
@@ -35,7 +32,7 @@ module.exports = (env, argv) => {
             static: path.resolve(__dirname, 'src'),
             port: 3000,
             open: true,
-            hot: true,
+            // hot: true,
             watchFiles: ['src/**/*.html'],
             // watchContentBase: true,
             // watchFiles: './',
@@ -68,15 +65,15 @@ module.exports = (env, argv) => {
                     test: /\.s[ac]ss$/i,
                     use: [
                         MiniCssExtractPlugin.loader,
-                        "css-loader",
-                        "sass-loader",
+                        'css-loader',
+                        'sass-loader',
                     ],
                 },
                 {
                     test: /\.m?js$/,
                     exclude: /node_modules/,
                     use: {
-                        loader: "babel-loader",
+                        loader: 'babel-loader',
                         options: {
                             presets: ['@babel/preset-env']
                         }
